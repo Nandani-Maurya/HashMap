@@ -1,0 +1,55 @@
+import java.util.*;
+import java.io.*;
+
+public class Main{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int n1 = sc.nextInt();
+        int[] arr1 = new int[n1];
+        for(int i=0; i<arr1.length; i++){
+            arr1[i] = sc.nextInt();
+        }
+        
+        int n2 = sc.nextInt();
+        int[] arr2 = new int[n2];
+        for(int i=0; i<arr2.length; i++){
+            arr2[i] = sc.nextInt();
+        }
+        
+        getCommonElement(arr1, arr2);
+    }
+    
+    public static void getCommonElement(int[] arr1, int[] arr2){
+        HashMap<Integer, Integer> hmapArr1 = createHashMapforArr1(arr1);
+
+        for(Integer val : arr2){
+            if(hmapArr1.containsKey(val)){
+                if(hmapArr1.get(val)>0)
+                {
+                    
+                    System.out.print(val + " ");
+                    int sum = hmapArr1.get(val)-1;
+                    hmapArr1.put(val,sum);
+                }
+                else
+                hmapArr1.remove(val);
+            }
+        }
+    }
+    
+    public static HashMap<Integer, Integer> createHashMapforArr1(int[] arr){
+        HashMap<Integer, Integer> hmap = new HashMap<>();
+        for(int i=0; i<arr.length; i++){
+            int num = arr[i];
+            if(hmap.containsKey(num))
+            {
+                int sum = hmap.get(num) +1;
+                hmap.put(num,sum);
+            }
+            else
+            hmap.put(num, 1);
+        }
+        
+        return hmap;
+    }
+}
