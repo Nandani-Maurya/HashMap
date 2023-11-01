@@ -9,24 +9,18 @@ public static HashMap<Integer, Integer> removecommonelements(int arr[])
      for(int i =0; i<arr.length; i++)
      {
       int n = arr[i];
-      if(hmap.containsKey(n))
-      {
-        hmap.put(n,1);
-      }
-      else
       hmap.put(n,1);
-    }
+     }
     return hmap;
 }
 public static void getcommonelements(HashMap<Integer, Integer> h , int arr[]) 
 {
-    for(int i =0;i<arr.length; i++)
+    for(Integer val : arr)
     {
-       int num = arr[i];
-       if(h.containsKey(num))
+      if(h.containsKey(val))
        {
-          System.out.println(num);
-          h.remove(num);
+          System.out.println(val);
+          h.remove(val);
         }
     }
 }
